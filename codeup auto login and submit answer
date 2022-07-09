@@ -1,0 +1,40 @@
+from selenium import webdriver
+import time
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+import pyperclip
+
+driver = webdriver.Chrome('C:\chromedriver.exe')
+
+driver.get('https://codeup.kr/')
+driver.maximize_window()
+
+driver.find_element('xpath','//*[@id="navbarNavDropdown"]/ul[2]/li[2]/a').click()
+
+cdup_id = driver.find_element('name','user_id')
+cdup_pw = driver.find_element('name','password')
+
+cdup_id.click()
+pyperclip.copy('snall708')
+cdup_id.send_keys(Keys.CONTROL,'v')
+time.sleep(1)
+
+cdup_pw.click()
+pyperclip.copy('fjqm708')
+cdup_pw.send_keys(Keys.CONTROL,'v')
+time.sleep(1)
+
+driver.find_element('xpath','/html/body/div[2]/form/input').click()
+
+
+driver.get('https://codeup.kr/submitpage.php?id=1001&rid=')
+
+kkk = driver.find_element('xpath','//*[@id="source"]/textarea')
+
+kkk.send_keys('#include <stdio.h>')
+kkk.send_keys(Keys.RETURN)
+kkk.send_keys('int main(void){')
+kkk.send_keys(Keys.RETURN)
+kkk.send_keys('printf("Hello");')
+
+driver.find_element('xpath','//*[@id="Submit"]').click()
