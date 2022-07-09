@@ -1,0 +1,25 @@
+import requests
+from bs4 import BeautifulSoup
+
+a = 1001
+b = 1100
+def main():
+    title_list=[]
+    inside_list=[]
+    f = open('basic.txt','w',encoding='utf-8')
+    for i in range(a,b,1):
+        rq = requests.get('https://codeup.kr/problem.php?id='+str(i))
+        #print(rq)
+        soup = BeautifulSoup(rq.text,'html.parser')
+        title = soup.find_all('h2',class_='text-center font-weight-bold mb-2')
+        inside = soup.find_all('div',class_='card-body')
+        if(title and inside):
+            inside_list.append(inside[0].get_text())
+            title_list.append(title[0].get_text())
+
+    for i in range(0,len(title_list)):
+        f.write(title_list[i])
+        f.write(inside_list[i])
+    f.close()
+if __name__ == '__main__':
+    main()
