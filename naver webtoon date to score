@@ -1,0 +1,23 @@
+import urllib.request
+from bs4 import BeautifulSoup as bs
+from openpyxl import Workbook
+
+def main():
+    numbers = []
+    dates = []
+    for i in range(1, 18):
+        url = 'https://comic.naver.com/webtoon/list.nhn?titleId=703846&weekday=tue&page='+str(i)
+        sourcecode = urllib.request.urlopen(url).read()
+        soup = bs(sourcecode,"html.parser")
+        table = soup.find("table",class_="viewList")
+        for i in table.find_all("strong"):
+            numbers.append(i.get_text())
+        for i in table.find_all("td",class_='num'):
+            dates.append(i.get_text())
+   
+    print("여신강림 날짜별 별점 목록")
+    for i in range(0,len(numbers)):
+        print(str(dates[i]) + " : " + str(numbers[i]))
+
+if __name__=="__main__":
+    main()
