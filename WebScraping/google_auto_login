@@ -1,0 +1,21 @@
+from selenium import webdriver
+import time
+from selenium.webdriver.common.keys import Keys
+import pyperclip
+
+driver = webdriver.Chrome('C:\chromedriver.exe')
+driver.get('https://accounts.google.com/ServiceLogin/identifier?ec=hpp_signin_001&flowName=GlifWebSignIn&flowEntry=ServiceLogin')
+time.sleep(1)
+
+google_id = driver.find_element('id', 'identifierId')
+time.sleep(1)
+google_id.click()
+pyperclip.copy('니네아이디')
+google_id.send_keys(Keys.CONTROL, 'v')
+time.sleep(1)
+driver.find_element('xpath', '//*[@id="identifierNext"]/div/button').click()
+
+time.sleep(1)
+driver.find_element('name', 'password').send_keys('니네비번')
+time.sleep(1)
+driver.find_element('xpath', '//*[@id="passwordNext"]/div/button').click()
