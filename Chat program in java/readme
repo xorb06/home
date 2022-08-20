@@ -1,0 +1,22 @@
+https://ndb796.tistory.com/54?category=986634
+
+2. 에러 졸라뜸
+https://joytk.tistory.com/30
+이거로해결
+
+1. 이클립스 다운로드(있지?)
+2. JavaFX Scene Builder(다운로드)
+3. eclipse들어가서 -> Help -> MarketPlace -> fx검색
+e(fx)clipse Install하기(오래걸림;)
+4. new -> project -> javafx project에 들어가서
+프로젝트 이름을 Chat Server로 설정하고, 
+JRE는 가장 최신버전으로 설정한후 Finish
+5. 빨간줄이 엄청 뜰것임.
+6. gluon에서 javafx의 jdk를 다운받으셈.
+https://gluonhq.com/products/javafx/
+OS -> Windows, Type -> SDK로 가장 최신버전 다운로드
+7. 다운로드받은 파일의 압축 푼 파일은 D:\에 저장하자.(편의상 폴더를 SDK라부를 예정)   
+8. 만든 Chat Server 프로젝트 우클릭 - properties - Java Build Path - Add External JARs클릭
+9. SDK의 lib에 들어가서 있는 파일들 "드래그 - 열기"하면 Java Build Path에 추가된다. 이상태로 Apply and close
+10. ctrl + shift + o 누르고 빨간줄 사라지는지 확인
+VM argument 설정하면된다.
